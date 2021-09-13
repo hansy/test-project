@@ -12,6 +12,7 @@ img {
 
 h1 {
   margin-top: 0;
+  margin-bottom: 5px;
 }
 
 .container {
@@ -34,4 +35,62 @@ h1 {
   .product__info {
     padding: 0 20px;
   }
+}
+
+.rating__snack {
+  display: flex;
+  align-items: center;
+}
+
+.rating__snack span {
+  margin-left: 10px;
+}
+
+.reviews__header {
+  display: flex;
+  align-items: center;
+}
+
+.reviews__header button {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+/* https://jsfiddle.net/NullDev/nju10Loz/2/ */
+.rating {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.rating > span {
+  margin-left: 10px;
+}
+
+.rating__stars {
+  color: #ddd;
+  position: relative;
+}
+
+.rating__stars svg {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.rating__stars--filled {
+  color: gold;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.rating__stars--empty {
+  padding: 0;
+  display: flex;
+  z-index: 0;
 }
