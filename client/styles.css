@@ -95,10 +95,10 @@ h1 {
   z-index: 0;
 }
 
-/**  
-  Modal
-  https://codepen.io/timothylong/pen/HhAer
-***/
+/*
+ * Modal
+ * https://codepen.io/timothylong/pen/HhAer
+ */
 
 .modal-window {
   position: fixed;
@@ -149,4 +149,75 @@ h1 {
   top: 0;
   width: 70px;
   text-decoration: none;
+}
+
+/*
+ * Star Rating Input
+ * https://codepen.io/jamesbarnett/pen/vlpkh
+ */
+
+.rating__input {
+  border: none;
+  /* float: left; */
+  position: relative;
+  color: #ddd;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.rating__input svg {
+  width: 30px;
+  height: 30px;
+}
+
+.rating__input > input {
+  display: none;
+}
+/* .rating__input > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: url("images/star.svg");
+  width: 30px;
+  height: 30px;
+} */
+
+/* .rating__input > .half:before {
+  content: "\f089";
+  position: absolute;
+} */
+
+.rating__input > label {
+  color: #ddd;
+  /* float: right; */
+}
+
+.rating__input > input:checked ~ label, /* show gold star when clicked */
+.rating__input:not(:checked) > label:hover, /* hover current star */
+.rating__input:not(:checked) > label:hover ~ label {
+  color: #ffd700;
+} /* hover previous stars in list */
+
+.rating__input > input:checked + label:hover, /* hover current star when changing rating */
+.rating__input > input:checked ~ label:hover,
+.rating__input > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating__input > input:checked ~ label:hover ~ label {
+  color: #ffed85;
+}
+
+/*
+ * New review form
+ */
+.form button[type="submit"] {
+  display: block;
+  margin: 10px 0 0 0;
+}
+
+textarea {
+  width: 100%;
+  height: 100px;
 }
