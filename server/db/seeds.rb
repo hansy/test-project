@@ -4,7 +4,7 @@ require 'faker'
   product = Product.create!(
     name: Faker::Commerce.product_name,
     description: Faker::Lorem.paragraph,
-    image: Faker::Placeholdit.image(size: '400x600'),
+    image: Faker::Placeholdit.image(size: '600x400'),
     price: (Faker::Commerce.price * 100).to_i
   )
   num_reviews = rand(5) # get random number 1-5
