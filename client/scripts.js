@@ -39,6 +39,10 @@ $(document).ready(function () {
   function onReviewCreateError(error) {
     console.log(error);
   }
+  function addProduct(product) {
+    $("#productName").html(product.name);
+    $("#productDescription").html(product.description);
+  }
   function addReview(review) {
     $(".reviews").prepend(
       `
@@ -70,10 +74,7 @@ $(document).ready(function () {
       `
     );
   }
-
-  function getReviewsSuccess(data) {
-    const reviews = JSON.parse(data);
-
+  function addReviews(reviews) {
     $.each(reviews, function (_, review) {
       addReview(review);
     });
@@ -88,12 +89,20 @@ $(document).ready(function () {
     $("#averageRating").css("width", `${getPercent(average, 5)}%`);
   }
 
-  function getReviewsError(error) {
+  function getProductSuccess(data) {
+    const product = JSON.parse(data);
+    const reviews = product.reviews;
+
+    addProduct(product);
+    addReviews(reviews);
+  }
+
+  function getProductError(error) {
     console.log(error);
   }
 
-  function getReviews(successCallback, errorCallback) {
-    $.ajax("http://localhost:4567/reviews", {
+  function getProduct(successCallback, errorCallback) {
+    $.ajax("http://localhost:4567/products/1", {
       method: "GET",
       success: successCallback,
       error: errorCallback,
@@ -104,7 +113,7 @@ $(document).ready(function () {
     $("#createReviewForm").trigger("reset");
   }
 
-  getReviews(getReviewsSuccess, getReviewsError);
+  getProduct(getProductSuccess, getProductError);
 
   $("#createReviewForm").on("submit", function (e) {
     e.preventDefault();
