@@ -1,6 +1,10 @@
 require 'sinatra'
+require 'sinatra/activerecord'
 require 'sinatra/cross_origin'
 require 'json'
+
+require './models/product'
+require './models/review'
 
 configure do
   enable :cross_origin

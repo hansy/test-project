@@ -1,0 +1,12 @@
+development: &default
+  adapter: mysql2
+  database: gumdroad_coding_challenge_development
+  encoding: utf8mb4
+  pool: 5
+  username: root
+  password:
+  socket: /var/run/mysqld/mysqld.sock
+
+production:
+  <<: *default
+  database: gumroad_coding_challenge_production
