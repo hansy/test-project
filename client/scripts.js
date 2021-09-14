@@ -5,8 +5,16 @@ function serializedArrToObj(arr) {
   }, {});
 }
 
-function getRoundedPercent(n, d) {
-  return Math.round((n / d) * 100);
+function getPercent(n, d) {
+  return ((n / d) * 100).toFixed(1);
+}
+
+function getAverageFromArr(arr) {
+  const total = arr.reduce(function (acc, val) {
+    return acc + val;
+  }, 0);
+
+  return total / arr.length;
 }
 
 $(document).ready(function () {
@@ -37,7 +45,7 @@ $(document).ready(function () {
       <li class="review">
         <div class="rating">
           <div class="rating__stars">
-            <div class="rating__stars--filled" style="width: ${getRoundedPercent(
+            <div class="rating__stars--filled" style="width: ${getPercent(
               review.rating,
               5
             )}%">
@@ -63,9 +71,40 @@ $(document).ready(function () {
     );
   }
 
+  function getReviewsSuccess(data) {
+    const reviews = JSON.parse(data);
+
+    $.each(reviews, function (_, review) {
+      addReview(review);
+    });
+
+    $("#numReviews").html(reviews.length);
+
+    const ratings = reviews.map(function (r) {
+      return r.rating;
+    });
+    const average = getAverageFromArr(ratings);
+
+    $("#averageRating").css("width", `${getPercent(average, 5)}%`);
+  }
+
+  function getReviewsError(error) {
+    console.log(error);
+  }
+
+  function getReviews(successCallback, errorCallback) {
+    $.ajax("http://localhost:4567/reviews", {
+      method: "GET",
+      success: successCallback,
+      error: errorCallback,
+    });
+  }
+
   function resetCreateReviewForm() {
     $("#createReviewForm").trigger("reset");
   }
+
+  getReviews(getReviewsSuccess, getReviewsError);
 
   $("#createReviewForm").on("submit", function (e) {
     e.preventDefault();

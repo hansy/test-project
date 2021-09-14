@@ -121,7 +121,7 @@
           <div class="rating__snack">
             <div class="rating">
               <div class="rating__stars">
-                <div class="rating__stars--filled" style="width: 70%">
+                <div id="averageRating" class="rating__stars--filled">
                   <svg
                     id="star"
                     xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +150,7 @@
                 </div>
               </div>
             </div>
-            <span>12 reviews</span>
+            <div><span id="numReviews"></span> reviews</div>
           </div>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
@@ -168,34 +168,7 @@
           <h2>Reviews</h2>
           <a class="ml-4" href="#open-modal">Add review</a>
         </div>
-        <ul class="reviews">
-          <li class="review">
-            <div class="rating">
-              <div class="rating__stars">
-                <div class="rating__stars--filled" style="width: 65%">
-                  <svg><use href="#star"></use></svg>
-                  <svg><use href="#star"></use></svg>
-                  <svg><use href="#star"></use></svg>
-                  <svg><use href="#star"></use></svg>
-                  <svg><use href="#star"></use></svg>
-                </div>
-                <div class="rating__stars--empty">
-                  <svg><use href="#star"></use></svg>
-                  <svg><use href="#star"></use></svg>
-                  <svg><use href="#star"></use></svg>
-                  <svg><use href="#star"></use></svg>
-                  <svg><use href="#star"></use></svg>
-                </div>
-              </div>
-              <span>2.5 / 5</span>
-            </div>
-
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              ultricies eleifend metus ornare suscipit
-            </p>
-          </li>
-        </ul>
+        <ul class="reviews"></ul>
       </section>
     </div>
     <script
