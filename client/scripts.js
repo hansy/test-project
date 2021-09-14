@@ -1,3 +1,5 @@
+const API_ENDPOINT = "http://localhost:4567";
+
 // Converts data from form serialized array into object
 function serializedArrToObj(arr) {
   return arr.reduce(function (acc, obj) {
@@ -42,6 +44,7 @@ $(document).ready(function () {
   function addProduct(product) {
     $("#productName").html(product.name);
     $("#productDescription").html(product.description);
+    $(".product__image").attr("src", product.image);
   }
   function addReview(review) {
     $(".reviews").prepend(
@@ -102,7 +105,7 @@ $(document).ready(function () {
   }
 
   function getProduct(successCallback, errorCallback) {
-    $.ajax("http://localhost:4567/products/1", {
+    $.ajax(`${API_ENDPOINT}/products/1`, {
       method: "GET",
       success: successCallback,
       error: errorCallback,
@@ -121,7 +124,7 @@ $(document).ready(function () {
     const data = getFormData($(this));
 
     submitForm(
-      "http://localhost:4567/reviews",
+      `${API_ENDPOINT}/reviews`,
       data,
       onReviewCreateSuccess,
       onReviewCreateError
